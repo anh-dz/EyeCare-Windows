@@ -1,0 +1,2471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>712</width>
+    <height>380</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>712</width>
+    <height>380</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>712</width>
+    <height>380</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>EyeCare</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../qrc/app.qrc">
+    <normaloff>:/app_icon/logo.ico</normaloff>:/app_icon/logo.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(242, 242, 242);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QStackedWidget" name="page">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>0</y>
+      <width>551</width>
+      <height>380</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>30</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page0">
+     <property name="font">
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
+     <widget class="QPushButton" name="btn_startCd">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>230</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../qrc/icon.qrc">
+        <normaloff>:/icon/start.png</normaloff>:/icon/start.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_Restart">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>30</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../qrc/icon.qrc">
+        <normaloff>:/icon/restart.png</normaloff>:/icon/restart.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>50</width>
+        <height>50</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cBox_chooseProfile">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>121</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Làm việc</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Họp</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="btnimg_DEYE">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>260</y>
+        <width>111</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../qrc/icon.qrc">
+        <normaloff>:/icon/eyes.png</normaloff>:/icon/eyes.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>128</width>
+        <height>128</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="timeTitle">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>110</y>
+        <width>131</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 50pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Còn</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="timeChange">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>110</y>
+        <width>301</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 50pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string> 00:00:00</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page1"/>
+    <widget class="QWidget" name="page2">
+     <widget class="QLabel" name="label_SETTING">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>10</y>
+        <width>151</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 28pt &quot;MS Shell Dlg 2&quot;;
+font-weight: bold;</string>
+      </property>
+      <property name="text">
+       <string>Cài Đặt</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>394</x>
+        <y>10</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+	background-color: rgb(247, 247, 247);
+	border: 1px soild grey;
+	border-radius: 5px;
+	font: 22pt &quot;MS Shell Dlg 2&quot;;
+    font-weight: bold;
+}
+QPushButton:hover{
+	background-color: rgb(255, 255, 105);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Lưu</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../qrc/icon.qrc">
+        <normaloff>:/icon/save.png</normaloff>:/icon/save.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>31</width>
+        <height>31</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>57</y>
+        <width>558</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page_2">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QScrollArea" name="scrollArea_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>540</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>540</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QScrollArea{
+	border: 0px;
+}
+QScrollBar:vertical {
+    border: 0px;
+    background:white;
+    width:5px;
+    border-radius: 5px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical {
+    min-height: 0px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(62, 57, 57);
+}
+QScrollBar::add-line:vertical {
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}</string>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustIgnored</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>540</width>
+             <height>640</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>540</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QWidget" name="widget_102" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>520</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>520</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(236, 249, 255);</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_45">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_67">
+                 <property name="styleSheet">
+                  <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;
+border:0px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Khởi động cùng hệ thống</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="checkBox_23">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>30</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QCheckBox::indicator {
+     width: 40px;
+     height: 40px;
+ }
+</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_47" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>520</width>
+                <height>150</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>520</width>
+                <height>150</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 231, 204);</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_15">
+               <property name="spacing">
+                <number>15</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="widget_16" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>520</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>520</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_51">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_85">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                    </property>
+                    <property name="text">
+                     <string>Lọc ánh sáng xanh</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QCheckBox" name="checkBox_24">
+                    <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>30</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QCheckBox::indicator {
+     width: 40px;
+     height: 40px;
+ }
+</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QWidget" name="widget_52" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>520</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>520</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_58">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="horizontalSpacing">
+                   <number>10</number>
+                  </property>
+                  <property name="verticalSpacing">
+                   <number>0</number>
+                  </property>
+                  <item row="0" column="3">
+                   <widget class="QWidget" name="widget_53" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_59">
+                     <property name="leftMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="spacing">
+                      <number>5</number>
+                     </property>
+                     <item row="0" column="2">
+                      <layout class="QHBoxLayout" name="workLayout_46">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetMaximumSize</enum>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="wakehInput_56">
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="contextMenuPolicy">
+                          <enum>Qt::DefaultContextMenu</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>06</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="space_77">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhNone</set>
+                         </property>
+                         <property name="text">
+                          <string>:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_76">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLabel" name="label_68">
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                       </property>
+                       <property name="text">
+                        <string>Tắt</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="2">
+                      <layout class="QHBoxLayout" name="workLayout_47">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetMaximumSize</enum>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="wakehInput_57">
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="contextMenuPolicy">
+                          <enum>Qt::DefaultContextMenu</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>06</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="space_78">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhNone</set>
+                         </property>
+                         <property name="text">
+                          <string>:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_77">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="label_92">
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                       </property>
+                       <property name="text">
+                        <string>Bật</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="label_86">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                    </property>
+                    <property name="text">
+                     <string>Tự động bật</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="4">
+                   <widget class="QCheckBox" name="checkBox_25">
+                    <property name="minimumSize">
+                     <size>
+                      <width>30</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>30</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QCheckBox::indicator {
+     width: 40px;
+     height: 40px;
+ }
+</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <spacer name="horizontalSpacer_7">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>55</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_31" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>520</width>
+                <height>200</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>520</width>
+                <height>200</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 251, 235);</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_60">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <property name="horizontalSpacing">
+                <number>10</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>0</number>
+               </property>
+               <item row="3" column="1">
+                <widget class="QWidget" name="widget_39" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_16">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QWidget" name="widget_54" native="true">
+                    <layout class="QGridLayout" name="gridLayout_61">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="horizontalSpacing">
+                      <number>5</number>
+                     </property>
+                     <property name="verticalSpacing">
+                      <number>0</number>
+                     </property>
+                     <item row="2" column="1">
+                      <layout class="QHBoxLayout" name="workLayout_54">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetMaximumSize</enum>
+                       </property>
+                       <property name="leftMargin">
+                        <number>26</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <spacer name="horizontalSpacer_10">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Fixed</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_90">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="space_92">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhNone</set>
+                         </property>
+                         <property name="text">
+                          <string>:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_91">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_75">
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                       </property>
+                       <property name="text">
+                        <string>Nghỉ dài</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <layout class="QHBoxLayout" name="workLayout_55">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetMaximumSize</enum>
+                       </property>
+                       <property name="leftMargin">
+                        <number>26</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <spacer name="horizontalSpacer_9">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeType">
+                          <enum>QSizePolicy::Fixed</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_92">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="space_94">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhNone</set>
+                         </property>
+                         <property name="text">
+                          <string>:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_93">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QHBoxLayout" name="workLayout_56">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
+                       <property name="sizeConstraint">
+                        <enum>QLayout::SetMaximumSize</enum>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="wakehInput_68">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="contextMenuPolicy">
+                          <enum>Qt::DefaultContextMenu</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>06</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="space_95">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhNone</set>
+                         </property>
+                         <property name="text">
+                          <string>:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_94">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="space_96">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhNone</set>
+                         </property>
+                         <property name="text">
+                          <string>:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="wakemInput_95">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>51</width>
+                           <height>43</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                         </property>
+                         <property name="inputMethodHints">
+                          <set>Qt::ImhPreferNumbers</set>
+                         </property>
+                         <property name="text">
+                          <string>00</string>
+                         </property>
+                         <property name="maxLength">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_93">
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                       </property>
+                       <property name="text">
+                        <string>Làm việc </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_76">
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                       </property>
+                       <property name="text">
+                        <string>Nghỉ</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="widget_55" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>520</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_62">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="horizontalSpacing">
+                      <number>5</number>
+                     </property>
+                     <property name="verticalSpacing">
+                      <number>0</number>
+                     </property>
+                     <item row="1" column="2">
+                      <widget class="QLabel" name="label_95">
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                       </property>
+                       <property name="text">
+                        <string>phiên làm việc</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_94">
+                       <property name="minimumSize">
+                        <size>
+                         <width>46</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>46</width>
+                         <height>300</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                       </property>
+                       <property name="text">
+                        <string>Sau </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="wakehInput_69">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>30</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>33</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="contextMenuPolicy">
+                        <enum>Qt::DefaultContextMenu</enum>
+                       </property>
+                       <property name="layoutDirection">
+                        <enum>Qt::LeftToRight</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                       </property>
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhPreferNumbers</set>
+                       </property>
+                       <property name="text">
+                        <string>06</string>
+                       </property>
+                       <property name="maxLength">
+                        <number>2</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="3">
+                      <widget class="QCheckBox" name="checkBox_26">
+                       <property name="minimumSize">
+                        <size>
+                         <width>30</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>30</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QCheckBox::indicator {
+     width: 40px;
+     height: 40px;
+ }
+</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_77">
+                 <property name="styleSheet">
+                  <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Thời gian làm việc</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_36" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>520</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>520</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(247, 245, 235);</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_67">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <property name="horizontalSpacing">
+                <number>5</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="3">
+                <widget class="QCheckBox" name="checkBox_29">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>30</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QCheckBox::indicator {
+     width: 40px;
+     height: 40px;
+ }
+</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <spacer name="horizontalSpacer_12">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>55</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_73">
+                 <property name="styleSheet">
+                  <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Thời gian ngủ</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QWidget" name="widget_58" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_68">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="spacing">
+                   <number>5</number>
+                  </property>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="label_74">
+                    <property name="styleSheet">
+                     <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                    </property>
+                    <property name="text">
+                     <string>Thức dậy</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <layout class="QHBoxLayout" name="workLayout_52">
+                    <property name="spacing">
+                     <number>10</number>
+                    </property>
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SetMaximumSize</enum>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLineEdit" name="wakehInput_62">
+                      <property name="maximumSize">
+                       <size>
+                        <width>51</width>
+                        <height>43</height>
+                       </size>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::DefaultContextMenu</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhPreferNumbers</set>
+                      </property>
+                      <property name="text">
+                       <string>06</string>
+                      </property>
+                      <property name="maxLength">
+                       <number>2</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="space_83">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16</width>
+                        <height>43</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhNone</set>
+                      </property>
+                      <property name="text">
+                       <string>:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="wakemInput_82">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>51</width>
+                        <height>43</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhPreferNumbers</set>
+                      </property>
+                      <property name="text">
+                       <string>00</string>
+                      </property>
+                      <property name="maxLength">
+                       <number>2</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="label_98">
+                    <property name="styleSheet">
+                     <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                    </property>
+                    <property name="text">
+                     <string>Ngủ</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <layout class="QHBoxLayout" name="workLayout_53">
+                    <property name="spacing">
+                     <number>10</number>
+                    </property>
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SetMaximumSize</enum>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLineEdit" name="wakehInput_63">
+                      <property name="maximumSize">
+                       <size>
+                        <width>51</width>
+                        <height>43</height>
+                       </size>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::DefaultContextMenu</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhPreferNumbers</set>
+                      </property>
+                      <property name="text">
+                       <string>06</string>
+                      </property>
+                      <property name="maxLength">
+                       <number>2</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="space_84">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16</width>
+                        <height>43</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhNone</set>
+                      </property>
+                      <property name="text">
+                       <string>:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="wakemInput_83">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>51</width>
+                        <height>43</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(254, 251, 246);
+border:0px;</string>
+                      </property>
+                      <property name="inputMethodHints">
+                       <set>Qt::ImhPreferNumbers</set>
+                      </property>
+                      <property name="text">
+                       <string>00</string>
+                      </property>
+                      <property name="maxLength">
+                       <number>2</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_35" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>520</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>520</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(254, 252, 243);</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_63">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <property name="horizontalSpacing">
+                <number>5</number>
+               </property>
+               <property name="verticalSpacing">
+                <number>0</number>
+               </property>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_96">
+                 <property name="styleSheet">
+                  <string notr="true">font: 18pt &quot;MS Shell Dlg 2&quot;;border:0px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Thời gian xoá dữ liệu thống kê</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="cBox_chooseProfile_2">
+                 <item>
+                  <property name="text">
+                   <string>7 ngày</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>14 ngày</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>30 ngày</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>60 ngày</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QPushButton" name="pushButton_2">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+	background-color: rgb(247, 247, 247);
+	border: 1px soild grey;
+	border-radius: 5px;
+	font: 22pt &quot;MS Shell Dlg 2&quot;;
+}
+QPushButton:hover{
+	background-color: rgb(255, 255, 105);
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Xoá</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../qrc/icon.qrc">
+                   <normaloff>:/icon/delete.png</normaloff>:/icon/delete.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>31</width>
+                   <height>31</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>531</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QHeaderView::section {
+	font: 14pt &quot;MS Shell Dlg 2&quot;;
+    background-color: rgb(238, 233, 218);
+    padding: 2px;
+	border: 1px soild grey;
+}
+QTableWidget {
+    border: 1px soild grey;
+    font: 12pt &quot;MS Shell Dlg 2&quot;;
+}
+QTableWidget QTableCornerButton::section {
+    background-color: rgb(238, 233, 218);
+	border: 1px soild grey;
+}
+
+QScrollBar:vertical {
+    border: 0px;
+    background:white;
+    width:5px;
+    border-radius: 5px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical {
+    min-height: 0px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(62, 57, 57);
+}
+QScrollBar::add-line:vertical {
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar:horizontal {
+    border: 0px;
+    background:white;
+    border-radius: 5px;
+    margin: 0px;
+	height: 5px;
+}
+QScrollBar::handle:horizontal {
+    min-height: 0px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(62, 57, 57);
+}
+QScrollBar::add-line:horizontal {
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>false</bool>
+        </property>
+        <property name="textElideMode">
+         <enum>Qt::ElideMiddle</enum>
+        </property>
+        <property name="showGrid">
+         <bool>true</bool>
+        </property>
+        <property name="gridStyle">
+         <enum>Qt::SolidLine</enum>
+        </property>
+        <property name="cornerButtonEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="rowCount">
+         <number>2</number>
+        </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>100</number>
+        </attribute>
+        <attribute name="horizontalHeaderHighlightSections">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>Tên</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Làm việc</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nghỉ ngắn</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nghỉ dài</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Phiên</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>504</x>
+          <y>293</y>
+          <width>31</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 0px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../qrc/icon.qrc">
+          <normaloff>:/icon/minus-circle.png</normaloff>:/icon/minus-circle.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>293</y>
+          <width>31</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 0px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../qrc/icon.qrc">
+          <normaloff>:/icon/plus-circle.png</normaloff>:/icon/plus-circle.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>293</y>
+          <width>31</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 0px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../qrc/icon.qrc">
+          <normaloff>:/icon/back.png</normaloff>:/icon/back.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page3">
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>531</width>
+        <height>341</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTextBrowser{
+    border:0px;
+}
+QScrollBar:vertical {
+    border: 0px;
+    background:white;
+    width:5px;
+    border-radius: 5px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical {
+    min-height: 0px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(62, 57, 57);
+}
+QScrollBar::add-line:vertical {
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}</string>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;EyeCare 2.0&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:8pt;&quot;&gt;Copyright ©2021 EyeCare _ MINK&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt; Tầm quan trọng của việc bảo vệ mắt&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt; “Đôi mắt là cửa sổ tâm hồn”, thế nhưng vì nhiều mục đích như làm việc, tra cứu, học tập mà bạn phải ngồi hàng giờ liền trên máy vi tính. Việc này tác động nhiều đến đôi mắt của bạn, thậm chí gây nguy hiểm cho mắt. Vậy làm thế nào để bảo vệ, ngăn ngừa, giảm mỏi mắt khi dùng máy tính?&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt; Với những người dùng máy vi tính, đặc biệt là dân văn phòng thì tình trạng nhức mỏi mắt là vấn đề thường xuyên xảy ra. Nhiều nghiên cứu chỉ ra tới 50–90% người dùng máy vi tính bị hiện tượng mỏi mắt và các triệu chứng thị giác khó chịu khác.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt; Những vấn đề này sẽ ảnh hưởng nhiều đến sức khỏe, nó khiến bạn mệt mỏi về thể chất, tinh thần giảm hiệu suất làm việc. Thậm chí, dùng máy tính một thời gian dài cũng gây những vấn đề về mắt rất khó chịu như co giật mắt, tăng độ cận, mắt đỏ…&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt; Vấn đề này có lẽ chúng ta đều đã biết, nhưng vì ở thời đại 4.0, công việc bắt buộc phải dùng máy tính, chúng ta chỉ còn cách tự bảo vệ mắt của mình. Chúng ta thường chú ý đến việc ngồi cách xa màn hình máy tính, ngồi đúng tư thế mà quên mất việc cho đôi mắt nghỉ ngơi một chút khi làm việc vất vả. Vì vậy, chương trình EyeCare ra đời nhằm giải quyết vấn đề đó. EyeCare giúp chúng ta đặt lịch nghỉ ngơi tự động sau một khoảng thời gian, khi đến thời gian nghỉ chương trình sẽ thông báo với bạn, chủ động khóa máy tính để bạn có thể đảm bảo việc nghỉ ngơi một cách tốt nhất. Trong thời gian đó, bạn hãy gác lại công việc, có thể làm một tách cafe, chớp mắt, một cốc sữa, massage cho mắt, ... Sau đó, bạn có thể quay lại làm việc, đôi mắt sẽ được nghỉ ngơi một khoảng thời gian nhất định, sẽ không còn bị mỏi, đau mắt nữa.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt; Đề xuất: Nguyên tắc 20 – 20 – 20 bảo vệ mắt&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt; Cứ mỗi 20 phút làm việc với máy tính, hãy bỏ 20 giây không dùng máy tính để nhìn ra xa 20 feet (&amp;lt;=&amp;gt; 609.6 cm). Điều này giúp mắt bạn được nghỉ ngơi hợp lý, thư giãn mắt, chống mỏi mắt.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt; Mặc định, EyeCare sẽ được cài đặt chế độ nghỉ ngơi theo nguyên tắc trên.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:14pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:14pt; font-style:italic;&quot;&gt; &amp;quot;EyeCare - Vì đôi mắt của bạn&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page4"/>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>158</width>
+      <height>380</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(233, 233, 233)</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>158</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="frameLayout">
+      <item>
+       <widget class="QPushButton" name="btn_left1">
+        <property name="maximumSize">
+         <size>
+          <width>158</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	color: rgb(57, 62, 70);
+	font: 15pt &quot;MS Shell Dlg 2&quot;;
+	border: 0px;
+	text-align: left
+}
+QPushButton:hover{
+	background-color: rgb(191, 191, 191)
+}</string>
+        </property>
+        <property name="text">
+         <string>Đặt thời gian</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../qrc/icon.qrc">
+          <normaloff>:/icon/time.png</normaloff>:/icon/time.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_left2">
+        <property name="maximumSize">
+         <size>
+          <width>158</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	color: rgb(57, 62, 70);
+	font: 15pt &quot;MS Shell Dlg 2&quot;;
+	border: 0px;
+	text-align: left
+}
+QPushButton:hover{
+	background-color: rgb(191, 191, 191)
+}</string>
+        </property>
+        <property name="text">
+         <string>Thống kê</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../qrc/icon.qrc">
+          <normaloff>:/icon/chart.png</normaloff>:/icon/chart.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_left3">
+        <property name="maximumSize">
+         <size>
+          <width>158</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	color: rgb(57, 62, 70);
+	font: 15pt &quot;MS Shell Dlg 2&quot;;
+	border: 0px;
+	text-align: left
+}
+QPushButton:hover{
+	background-color: rgb(191, 191, 191)
+}</string>
+        </property>
+        <property name="text">
+         <string>Cài đặt</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../qrc/icon.qrc">
+          <normaloff>:/icon/setting.png</normaloff>:/icon/setting.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_left4">
+        <property name="maximumSize">
+         <size>
+          <width>158</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	color: rgb(57, 62, 70);
+	font: 15pt &quot;MS Shell Dlg 2&quot;;
+	border: 0px;
+	text-align: left
+}
+QPushButton:hover{
+	background-color: rgb(191, 191, 191)
+}</string>
+        </property>
+        <property name="text">
+         <string>Giới thiệu</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../qrc/icon.qrc">
+          <normaloff>:/icon/about.png</normaloff>:/icon/about.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>36</width>
+          <height>36</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../qrc/icon.qrc"/>
+  <include location="../qrc/app.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,27 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>back.png</file>
+    <file>plus-circle.png</file>
+    <file>minus-circle.png</file>
+    <file>delete.png</file>
+    <file>save.png</file>
+    <file>about.png</file>
+    <file>bird.png</file>
+    <file>chart.png</file>
+    <file>draw_lock.png</file>
+    <file>draw_un.png</file>
+    <file>eyes.png</file>
+    <file>hide.png</file>
+    <file>night.png</file>
+    <file>pause.png</file>
+    <file>restart.png</file>
+    <file>screen.png</file>
+    <file>setting.png</file>
+    <file>show.png</file>
+    <file>star.png</file>
+    <file>start.png</file>
+    <file>stop.png</file>
+    <file>time.png</file>
+    <file>tired.png</file>
+  </qresource>
+</RCC>
