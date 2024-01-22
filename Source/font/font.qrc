@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="font">
+    <file>Roboto-Light.ttf</file>
+    <file>Roboto-Medium.ttf</file>
+    <file>Roboto-Regular.ttf</file>
+    <file>Social Media Circled.otf</file>
+  </qresource>
+</RCC>
