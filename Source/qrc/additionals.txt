@@ -1,0 +1,85 @@
+EyeCare is still running!
+Left
+Your eye need to rest now! Remember to save your work <3
+15 minutes left. Save all your files!!!
+5 minutes left. Prepare to sleep!!!
+1 minutes left. Good night <3
+Sleeping late is not good for your health :(
+Work and rest time must be over 10 seconds
+Warning: Too much break time. When the break time is active, you will not be able to use the computer
+Pause
+Stop
+Start
+Continue
+Stop
+Pause
+Stop
+Invalid time!
+Sleep Too Late!!!
+Success!
+--New password--
+Password need to be fill!!!
+--Enter your password again--
+--Please Try Again--
+Change Fail
+Success
+~Wrong Password~
+Found a new version. Please go to our homepage to update now!
+No update available!
+Cannot connect to server. Please try again!
+Are you sure?
+Yes
+Nope
+Show
+Hide
+Start
+Exit
+Finish Break
+Back to Work
+Enter Password
+Wrong Password!!!
+Time to sleep. Auto turn off computer after 40s
+Enter password to continue working
+\
+EyeCare vẫn đang chạy!
+Còn
+Chuẩn bị nghỉ ngơi thôi, nhớ lưu công việc lại nha <3
+Còn 15 phút. Hãy lưu tất cả các tệp!!!
+Còn 5 phút. Chuẩn bị đi ngủ!!!
+Còn 1 phút. Chúc ngủ ngon <3
+Thức khuya không tốt cho sức khỏe đâu :(
+Thời gian làm việc và nghỉ ngơi phải trên 10 giây
+Cảnh báo: Nghỉ ngơi quá lâu. Khi thời gian nghỉ ngơi đang hoạt động, bạn sẽ không thể sử dụng máy tính
+Tạm dừng
+Dừng
+Bắt đầu
+Tiếp tục
+Dừng
+Tạm dừng
+Dừng
+Thời gian không hợp lệ!
+Ngủ quá muộn!!!
+Thành công!
+--Mật khẩu mới--
+Mật khẩu không được để trống!!!
+--Nhập lại mật khẩu của bạn--
+--Vui lòng thử lại--
+Đổi thất bại!
+Thành công!
+~Sai mật khẩu~
+Đã tìm thấy phiên bản mới. Vui lòng truy cập trang chủ để cập nhật ngay!
+Không tìm thấy bản cập nhật nào!
+Không thể kết nối với máy chủ. Vui lòng thử lại!
+Bạn có chắc chắn?
+Có
+Không
+Hiển thị
+Ẩn
+Bắt đầu
+Thoát
+Hết giờ nghỉ giải lao
+Trở lại
+Nhập mật khẩu
+Sai mật khẩu!!!
+Đến giờ đi ngủ. Máy tính sẽ tự động tắt sau 40s
+Nhập mật khẩu để làm hại sức khoẻ bản thân

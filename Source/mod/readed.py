@@ -25,6 +25,16 @@ def decode_(encode_f):
 				temp = ""
 	return string_decode.split('\n')
 
+def open_un():
+	try:
+		with open(f'C://Users//{user}//AppData//Roaming//EyeCare//un.set', 'rb') as f:
+			lget = decode_(f.readline())
+			shortcut, lang = lget[0].replace('\n', ''), int(lget[1].replace('\n', ''))
+	except:
+		shortcut = 'Ctrl+Alt'
+		lang = 0
+	return shortcut, lang
+
 def open_data():
 	try:
 		with open(f'C://Users//{user}//AppData//Roaming//EyeCare//data.set', 'rb') as f:

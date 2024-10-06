@@ -21,7 +21,7 @@ class GET_PASS(QDialog):
         self.show_hide.setIconSize(QSize(50, 50))
         self.show_hide.clicked.connect(self.change_icon)
         self.OkOk = QPushButton(self)
-        self.OkOk.setGeometry(QRect(450, 10, 60, 30))
+        self.OkOk.setGeometry(QRect(450, 10, 50, 30))
         self.OkOk.setStyleSheet("QPushButton{color:rgb(225,225,225);background-color:rgb(59,68,131);border:1px rgb(59,68,131);border-radius:10;font:14pt \"Roboto Medium\"}QPushButton:hover{border:1px rgb(59,100,131);background-color:rgb(59,100,131)}")
         self.OkOk.clicked.connect(self.okela)
         self.enter.setPlaceholderText("Enter your Password")
@@ -32,7 +32,7 @@ class GET_PASS(QDialog):
         self.setWindowTitle("EyeCare")
 
         self.label.setText(change_pass)
-        self.OkOk.setText("Finish")
+        self.OkOk.setText("Okay")
     def change_icon(self):
         if self._show:
             self.show_hide.setIcon(QIcon(QPixmap("qrc/hide.png")))   
@@ -60,7 +60,7 @@ class GET_WORD(QDialog):
         self.word_get.setStyleSheet("font: 18pt \"Roboto\";border : 2px solid rgb(56,56,56);border-radius : 5;")
         self.word_get.setMaxLength(500)
         self.OkOk = QPushButton(self)
-        self.OkOk.setGeometry(QRect(480, 60, 60, 30))
+        self.OkOk.setGeometry(QRect(480, 60, 50, 30))
         self.OkOk.setStyleSheet("QPushButton{color:rgb(225,225,225);background-color:rgb(59,68,131);border:1px rgb(59,68,131);border-radius:10;font:14pt \"Roboto Medium\"}QPushButton:hover{border:1px rgb(59,100,131);background-color:rgb(59,100,131)}")
         self.OkOk.clicked.connect(self.okela)
 
@@ -70,7 +70,7 @@ class GET_WORD(QDialog):
         QMetaObject.connectSlotsByName(self)
         self.label.setText("--Enter Text--")
         self.word_get.setPlaceholderText(text_set)
-        self.OkOk.setText("Finish")
+        self.OkOk.setText("Okay")
     def okela(self):
         self._word_check_ = self.word_get.text()
         self.close()

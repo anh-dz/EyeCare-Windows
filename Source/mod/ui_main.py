@@ -1,4 +1,4 @@
-from PyQt6.QtCore import QRect, QSize, QMetaObject
+from PyQt6.QtCore import QRect, QSize, QMetaObject, QCoreApplication
 from PyQt6.QtGui import QFontDatabase, QIcon, QPixmap, QFont, QIntValidator
 from PyQt6.QtWidgets import QComboBox, QFrame, QStackedWidget, QWidget, QLabel, QLineEdit, QHBoxLayout, QPushButton, QSpacerItem, QSizePolicy, QGridLayout, QVBoxLayout, QCheckBox, QTextBrowser
 
@@ -71,11 +71,19 @@ class Ui_MainWindow(object):
         self.start.setIconSize(QSize(50, 50))
         self.start_layout.addWidget(self.start)
         self.edit = QPushButton(self.page_0)
-        self.edit.setGeometry(QRect(470, 20, 54, 50))
+        self.edit.setGeometry(QRect(490, 20, 54, 50))
         self.edit.setStyleSheet("border: 0px;")
         self.edit.setText("")
         self.edit.setIcon(QIcon(QPixmap("qrc/draw_lock.png")))
         self.edit.setIconSize(QSize(50, 50))
+        
+        self.pin_btn = QPushButton(self.page_0)
+        self.pin_btn.setGeometry(QRect(40, 20, 54, 50))
+        self.pin_btn.setStyleSheet("border: 0px")
+        self.pin_btn.setText("")
+        self.pin_btn.setIcon(QIcon(QPixmap("qrc/pin.png")))
+        self.pin_btn.setIconSize(QSize(50, 50))
+
         self.time_left = QLabel(self.page_0)
         self.time_left.setGeometry(QRect(420, 340, 131, 31))
         self.time_left.setStyleSheet("font: 16pt \"Roboto Medium\"")
@@ -123,7 +131,7 @@ class Ui_MainWindow(object):
         self.start_sleep.setIcon(QIcon(QPixmap("qrc/start.png")))
         self.start_sleep.setIconSize(QSize(50, 50))
         self.edit_sleep = QPushButton(self.page_1)
-        self.edit_sleep.setGeometry(QRect(470, 20, 54, 50))
+        self.edit_sleep.setGeometry(QRect(490, 20, 54, 50))
         self.edit_sleep.setStyleSheet("border: 0px;")
         self.edit_sleep.setText("")
         self.edit_sleep.setIcon(QIcon(QPixmap("qrc/draw_lock.png")))
@@ -160,9 +168,6 @@ class Ui_MainWindow(object):
         self.chon_bieu_do = QComboBox(self.page_2)
         self.chon_bieu_do.setGeometry(QRect(50, 7, 100, 22))
         self.chon_bieu_do.setStyleSheet("QComboBox{background-color: rgb(255,255,255);border: 1px solid grey;border-radius: 5px}QComboBox::drop-down{border:0px}QComboBox QAbstractItemView{background-color: rgb(255, 255, 255)}")
-        self.chon_bieu_do.addItem("Hours Track")
-        self.chon_bieu_do.addItem("Minutes Track")
-        self.chon_bieu_do.addItem("Sleep Track")
         self.save = QPushButton(self.page_2)
         self.save.setGeometry(QRect(390, 7, 55, 22))
         self.save.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(255, 255, 155);border: 1px soild grey;border-radius: 5px;font: 13pt \"Roboto\"}QPushButton:hover{background-color: rgb(255, 255, 105)}")
@@ -173,7 +178,7 @@ class Ui_MainWindow(object):
 
         self.page_3 = QWidget()
         self.Setting_Layout_Size = QWidget(self.page_3)
-        self.Setting_Layout_Size.setGeometry(QRect(30, 30, 331, 291))
+        self.Setting_Layout_Size.setGeometry(QRect(30, 30, 300, 291))
         self.Setting_Layout = QVBoxLayout(self.Setting_Layout_Size)
         self.Setting_Layout.setContentsMargins(0, 0, 0, 0)
         self.start_with = QCheckBox(self.Setting_Layout_Size)
@@ -199,6 +204,33 @@ class Ui_MainWindow(object):
         self.password = QCheckBox(self.Setting_Layout_Size)
         self.password.setStyleSheet("font:16pt \"Roboto\"")
         self.Setting_Layout.addWidget(self.password)
+
+        self.Setting_Right_Size = QWidget(self.page_3)
+        self.Setting_Right_Size.setGeometry(QRect(300, 30, 240, 80))
+        self.Setting_Right = QVBoxLayout(self.Setting_Right_Size)
+        self.Setting_Right.setContentsMargins(0, 0, 0, 0)
+        self.shortcut_layout = QHBoxLayout()
+        self.shortcut_label = QLabel(self.Setting_Right_Size)
+        self.shortcut_label.setStyleSheet("font: 16pt \"Roboto\"")
+        self.shortcut_button = QPushButton(self.Setting_Right_Size)
+        self.shortcut_button.setStyleSheet("font: 14pt \"Roboto\"")
+        self.shortcut_button.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(220, 222, 220);border: 1px soild grey;border-radius: 0px;font: 16pt \"Roboto\"}")
+        self.shortcut_layout.addWidget(self.shortcut_label)
+        self.shortcut_layout.addWidget(self.shortcut_button)
+        self.Setting_Right.addLayout(self.shortcut_layout)
+        spacerItem5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.Setting_Right.addItem(spacerItem5)
+        self.language_layout = QHBoxLayout()
+        self.language_label = QLabel(self.Setting_Right_Size)
+        self.language_label.setStyleSheet("font: 16pt \"Roboto\"")
+        self.language_combobox = QComboBox()
+        self.language_combobox.addItem(QIcon(QPixmap("qrc/usaflg.png")), "English")
+        self.language_combobox.addItem(QIcon(QPixmap("qrc/vnflg.png")), "Tiếng Việt")
+        self.language_combobox.setStyleSheet("font: 14pt \"Roboto\"")
+        self.language_layout.addWidget(self.language_label)
+        self.language_layout.addWidget(self.language_combobox)
+        self.Setting_Right.addLayout(self.language_layout)
+
         self.file_edit = QPushButton(self.page_3)
         self.file_edit.setGeometry(QRect(80, 255, 41, 23))
         self.file_edit.setStyleSheet("QPushButton{color:rgb(56, 56, 56);background-color:rgb(191, 191, 191);border: 1px soild grey;border-radius: 5px;font:11pt \"Roboto\"}QPushButton:hover{background-color:rgb(211, 211, 211)}")
@@ -206,7 +238,7 @@ class Ui_MainWindow(object):
         self.text_edit.setGeometry(QRect(140, 255, 41, 23))
         self.text_edit.setStyleSheet("QPushButton{color:rgb(56, 56, 56);background-color:rgb(191, 191, 191);border: 1px soild grey;border-radius: 5px;font:11pt \"Roboto\"}QPushButton:hover{background-color: rgb(211, 211, 211)}")
         self.password_edit = QPushButton(self.page_3)
-        self.password_edit.setGeometry(QRect(120, 320, 60, 23))
+        self.password_edit.setGeometry(QRect(80, 320, 41, 23))
         self.password_edit.setStyleSheet("QPushButton{color:rgb(56, 56, 56);background-color:rgb(191, 191, 191);border: 1px soild grey;border-radius: 5px;font:11pt \"Roboto\"}QPushButton:hover{background-color: rgb(211, 211, 211)}")
         self.check_update = QPushButton(self.page_3)
         self.check_update.setGeometry(QRect(250, 335, 180, 30))
@@ -218,6 +250,19 @@ class Ui_MainWindow(object):
         self.eyes.setText("")
         self.eyes.setPixmap(QPixmap("qrc/eyes.png"))
         self.eyes.setScaledContents(True)
+
+        self.Page_Stack.addWidget(self.page_3)
+
+
+        # self.record_shortcut = QCheckBox(self.Setting_Right)
+        # self.record_shortcut.setStyleSheet("font: 16pt \"Roboto\"")
+        # self.Setting_Right.addWidget(self.record_shortcut)
+        # spacerItemx = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        # self.Setting_Right.addItem(spacerItemx)
+        # self.choose_language = QCheckBox(self.Setting_Right)
+        # self.choose_language.setStyleSheet("font: 16pt \"Roboto\"")
+        # self.Setting_Right.addWidget(self.choose_language)
+
         self.Page_Stack.addWidget(self.page_3)
 
         self.page_4 = QWidget()
@@ -363,50 +408,63 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle("EyeCare")
-        self.work.setText("     Focus")
-        self.relax.setText("Rest")
-        self.non_1.setText(":")
-        self.non_2.setText(":")
-        self.non_3.setText(":")
-        self.non_4.setText(":")
-        self.non_sleep_1.setText(":")
-        self.non_sleep_2.setText(":")
-        self.password_edit.setText("Change")
-        self.time_left.setText("00:00:00 Left")
-        self.lock_screen.setText(" Lock Screen")
-        self.ngu_qua_gio.setText("SLEEP LATE!!!")
-        self.wake.setText("Wake")
-        self.sleep.setText("Sleep")
-        self.start_with.setText("Start with your PC")
-        self.open_with.setText("Open the app interface")
-        self.sound.setText("Sound")
-        self.picture.setText("Waiting Image")
-        self.password.setText("Password")
-        self.file_edit.setText("File")
-        self.text_edit.setText("Word")
-        self.check_update.setText("Check For Updates")
+
+        self.chon_bieu_do.clear()
+        self.chon_bieu_do.addItem(QCoreApplication.translate("MainWindow", "Hours Track"))
+        self.chon_bieu_do.addItem(QCoreApplication.translate("MainWindow", "Minutes Track"))
+        self.chon_bieu_do.addItem(QCoreApplication.translate("MainWindow", "Sleep Track"))
+
+        # Page 0
+        self.work.setText(QCoreApplication.translate("MainWindow", "     Focus"))
+        self.relax.setText(QCoreApplication.translate("MainWindow", "Rest"))
+        self.password_edit.setText(QCoreApplication.translate("MainWindow", "Edit"))
+        self.time_left.setText(QCoreApplication.translate("MainWindow", "00:00:00 Left"))
+        self.lock_screen.setText(QCoreApplication.translate("MainWindow", " Lock Screen"))
+        self.ngu_qua_gio.setText(QCoreApplication.translate("MainWindow", "SLEEP LATE!!!"))
+        self.wake.setText(QCoreApplication.translate("MainWindow", "Wake"))
+        self.sleep.setText(QCoreApplication.translate("MainWindow", "Sleep"))
+        self.start_with.setText(QCoreApplication.translate("MainWindow", "Start with your PC"))
+        self.open_with.setText(QCoreApplication.translate("MainWindow", "Open app interface"))
+        self.sound.setText(QCoreApplication.translate("MainWindow", "Sound"))
+        self.picture.setText(QCoreApplication.translate("MainWindow", "Waiting Image"))
+        self.password.setText(QCoreApplication.translate("MainWindow", "Password"))
+        self.file_edit.setText(QCoreApplication.translate("MainWindow", "File"))
+        self.text_edit.setText(QCoreApplication.translate("MainWindow", "Word"))
+        self.check_update.setText(QCoreApplication.translate("MainWindow", "Check For Updates"))
+
+        self.set_time.setText(QCoreApplication.translate("MainWindow", "Time Focus"))
+        self.set_sleep.setText(QCoreApplication.translate("MainWindow", "Time Sleep"))
+        self.set_chart.setText(QCoreApplication.translate("MainWindow", "Analyze"))
+        self.set_setting.setText(QCoreApplication.translate("MainWindow", "Setting"))
+        self.set_about.setText(QCoreApplication.translate("MainWindow", "About"))
+        self.save.setText(QCoreApplication.translate("MainWindow", "Export"))
+        self.dele.setText(QCoreApplication.translate("MainWindow", "Delete"))
+        self.sound_on.setText(QCoreApplication.translate("MainWindow", "Sound"))
+        self.auto_on.setText(QCoreApplication.translate("MainWindow", "Auto Start"))
+        self.password_on.setText(QCoreApplication.translate("MainWindow", "Password"))
+        self.shortcut_label.setText(QCoreApplication.translate("MainWindow", "Shortcut"))
+        self.language_label.setText(QCoreApplication.translate("MainWindow", "Language"))
+
+        # self.shortcut_button.setText("Ctrl+Alt")
         self.website.setText("K")
         self.youtube.setText("M")
         self.blogspot.setText("N")
         self.facebook.setText("E")
         self.insta.setText("Q")
         self.mail.setText("k")
-        self.set_time.setText("Time Focus")
-        self.set_sleep.setText("Time Sleep")
-        self.set_chart.setText("Analyze")
-        self.set_setting.setText("Setting")
-        self.set_about.setText("About")
-        self.save.setText("Save")
-        self.dele.setText("Delete")
-        self.sound_on.setText("Sound")
-        self.auto_on.setText("Auto Start")
-        self.password_on.setText("Password")
-        self.Page_Stack.setCurrentIndex(0)
+        
+        self.non_1.setText(":")
+        self.non_2.setText(":")
+        self.non_3.setText(":")
+        self.non_4.setText(":")
+        self.non_sleep_1.setText(":")
+        self.non_sleep_2.setText(":")
+
         self.text_about.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Roboto Light\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:22pt;\">EyeCare 1.0</span></p>"
+"<p style=\"font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:22pt;\">EyeCare 1.5</span></p>"
 "<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Copyright ©2021 EyeCare _ MINK</span></p>"
 "<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Tầm quan trọng của việc bảo vệ mắt</span></p>"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> “Đôi mắt là cửa sổ tâm hồn”, thế nhưng vì nhiều mục đích như làm việc, tra cứu, học tập mà bạn phải ngồi hàng giờ liền trên máy vi tính. Việc này tác động nhiều đến đôi mắt của bạn, thậm chí gây nguy hiểm cho mắt. Vậy làm thế nào để bảo vệ, ngăn ngừa, giảm mỏi mắt khi dùng máy tính?</span></p>"
@@ -421,4 +479,4 @@ class Ui_MainWindow(object):
 "<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Ngoài ra...</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> EyeCare còn hỗ trợ bạn thiết lập thời gian đi ngủ! Khi bạn ngủ đủ giấc, bạn sẽ làm việc một cách hiệu quả hơn!</span></p>"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-style:italic;\"> &quot;EyeCare - Vì đôi mắt của bạn&quot;</span></p></body></html>")
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-style:italic;\"><center>&quot;EyeCare - Vì đôi mắt của bạn&quot;</center></span></p></body></html>")
