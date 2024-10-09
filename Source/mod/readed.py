@@ -90,13 +90,22 @@ def open_sleep_data():
 		sleep_data = []
 	return sleep_data
 
-def open_det() -> list:
+def open_det():
+	shortcut, lang = open_un()
 	try:
 		with open(f'C://Users//{user}//AppData//Roaming//EyeCare//det.set', 'rb') as f:
 			det = decode_(f.readline())
 			det = [i.strip() for i in det]
+			if det[1] == "Stand up and take a break!!!" or det[1] == ["Tạm dừng công viêc lại và nghỉ ngơi một lúc nào!"]:
+				if lang == 0:
+					det[1] = "Stand up and take a break!!!"
+				else:
+					det[1] = "Tạm dừng công viêc lại và nghỉ ngơi một lúc nào!"
 	except:
-		det = ['C:/', "Your eye need to rest now! Remember to save your work <3"]
+		if lang == 0:
+			det = ["C:/", "Stand up and take a break!!!"]
+		else:
+			det = ["C:/", "Tạm dừng công viêc lại và nghỉ ngơi một lúc"]
 	return det
 
 def delete_file(file):

@@ -25,19 +25,20 @@ if tuple(p.name() for p in psutil.process_iter()).count("EyeCare.exe")>1:
 isPwgsOn = False
 
 class DialogFunc(Ui_Dialog):
-    def __init__(self, main_app):
+    def __init__(self, main_app, start__):
         global Pwgs, isPwgsOn
         super().__init__()
         Pwgs = self
-        self.main_app = main_app  # Store reference to main app
+        self.main_app = main_app
+        self.s = start__
         Pwgs.setupUi(self)
         Pwgs.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
         Pwgs.pin_start.clicked.connect(self.pin_click)
-        if start__:
+        if self.s:
             Pwgs.pin_start.setIcon(QIcon(QPixmap("qrc/start.png")))
         else:
             Pwgs.pin_start.setIcon(QIcon(QPixmap("qrc/stop.png")))
-        Pwgs.lb_time.setText(f"{widgets.work_h.text()}:{widgets.work_m.text()}:{widgets.work_s.text()}")
+        Pwgs.lb_time.setText(widgets.time_left.text().replace(' Left', '').replace('Còn ', ''))
         Pwgs.show()
         isPwgsOn = True
     
@@ -62,17 +63,14 @@ class Time_COUNT(QThread):
 
     def run(self):
         time__about__temp = self.time__about.copy()
-        while not start__:
+        while True:
             while pause_: pass
-            if start__: break
             if nlang == 0:
                 widgets.time_left.setText(f"{str(time__about__temp[0]).zfill(2)}:{str(time__about__temp[1]).zfill(2)}:{str(time__about__temp[2]).zfill(2)} Left")
             else:
                 widgets.time_left.setText(f"Còn {str(time__about__temp[0]).zfill(2)}:{str(time__about__temp[1]).zfill(2)}:{str(time__about__temp[2]).zfill(2)}")
             if isPwgsOn: Pwgs.lb_time.setText(f"{str(time__about__temp[0]).zfill(2)}:{str(time__about__temp[1]).zfill(2)}:{str(time__about__temp[2]).zfill(2)}")
-            if start__: break
             time.sleep(1)
-            if start__: break
             time__about__temp[2]-=1
             if time__about__temp[0] == 0 and time__about__temp[1] == 0 and time__about__temp[2] == 5:
                 Notifi().show_toast(language[nlang][2])
@@ -86,7 +84,6 @@ class Time_COUNT(QThread):
                 else:
                     time__about__temp = self.time__about.copy()
                     focus(self._setting[3], self._setting[2], self._det, self.tim_wait, nlang)
-        time__about__temp.clear()
 
 class Time_SLEEP(QThread):
     def __init__(self, _setting_sleep, _pass, sleep_data, days, date_today, sleep_list, parent=None):
@@ -135,6 +132,23 @@ class Time_SLEEP(QThread):
         widgets.ngu_qua_gio.show()
         widgets.start_sleep.setIcon(QIcon(QPixmap("qrc/start.png")))
         Notifi().show_toast(language[nlang][6])
+
+from PyQt6.QtCore import QThread, pyqtSignal
+from urllib.request import urlopen
+
+class UpdateCheckThread(QThread):
+    update_result = pyqtSignal(str)
+
+    def run(self):
+        try:
+            current_version = "1.5"
+            response = urlopen('https://anh-dz.github.io/eyecare/version.html', timeout=1).read().decode().strip()
+            if response != current_version:
+                self.update_result.emit(language[nlang][26])
+            else:
+                self.update_result.emit(language[nlang][27])
+        except:
+            self.update_result.emit(language[nlang][28])
 
 class Main_APP(QMainWindow):
     def __init__(self):
@@ -190,6 +204,7 @@ class Main_APP(QMainWindow):
         widgets.start_sleep.clicked.connect(self.start_sleep_active)
         widgets.start.clicked.connect(self.start_active)
         widgets.pin_btn.clicked.connect(self.start_dialog)
+        widgets.button_next.clicked.connect(self.next_active)
         widgets.button_pause.clicked.connect(self.pause_active)
         widgets.check_update.clicked.connect(self.update_active)
         widgets.edit.clicked.connect(self.edit_active)
@@ -242,6 +257,7 @@ class Main_APP(QMainWindow):
         if self.translator.load(f"qrc/translations_{nlang}.qm"):
             QApplication.installTranslator(self.translator)
             widgets.retranslateUi(self)
+            self.reload_tray()
         else:
             pass
 
@@ -250,7 +266,6 @@ class Main_APP(QMainWindow):
         self.edit_sleep_= False
         self.edit_ = False
         self.pause_ = False
-        self.__sleep_start__ = True
         self.start__ = True
 
         self._time = open_time()
@@ -292,8 +307,7 @@ class Main_APP(QMainWindow):
         widgets.shortcut_button.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(220, 222, 220);border: 1px soild grey;border-radius: 0px;font: 16pt \"Roboto\"}")
     
     def start_active(self):
-        global start__
-        if start__:
+        if self.start__:
             self.time__about = [widgets.work_h.text(), widgets.work_m.text(), widgets.work_s.text()]
             wait_time = [widgets.relax_h.text(), widgets.relax_m.text(), widgets.relax_s.text()]
             for i in range(3):
@@ -325,9 +339,9 @@ class Main_APP(QMainWindow):
             else: _temp_pass = True
             if _temp_pass: self.call_stop()
     def active(self):
-        global start__
-        start__ = False
+        self.start__ = False
         widgets.button_pause.setVisible(True)
+        widgets.button_next.setVisible(True)
         widgets.start.setIcon(QIcon(QPixmap("qrc/stop.png")))
         if isPwgsOn:
             Pwgs.pin_start.setIcon(QIcon(QPixmap("qrc/stop.png")))
@@ -340,9 +354,11 @@ class Main_APP(QMainWindow):
         self.COUNT = Time_COUNT(self._setting, self._det, self.tim_wait, self.time__about)
         self.COUNT.start()
     def call_stop(self):
-        global start__, pause_
-        start__, pause_ = True, False
+        self.COUNT.terminate()
+        global pause_
+        self.start__, pause_ = True, False
         widgets.button_pause.setVisible(False)
+        widgets.button_next.setVisible(False)
         widgets.start.setIcon(QIcon(QPixmap("qrc/start.png")))
         if isPwgsOn:
             Pwgs.pin_start.setIcon(QIcon(QPixmap("qrc/start.png")))
@@ -351,6 +367,11 @@ class Main_APP(QMainWindow):
         self.tray_menu.removeAction(self.pause_app)
         self.tray_menu.addAction(self.start_app)
         self.start_app.triggered.connect(self.start_click)
+    
+    def next_active(self):
+        self.call_stop()
+        focus(self._setting[3], self._setting[2], self._det, self.tim_wait, nlang)
+        self.start_active()
 
     #JUST A BUTTON
     def pause_active(self):
@@ -652,14 +673,16 @@ class Main_APP(QMainWindow):
         self.msg.setText(language[nlang][25])
         self.msg.exec()
     def update_active(self):
-        try:
-            if urlopen('https://anh-dz.github.io/eyecare/version.html').read() != b'1.5\n':
-                print(urlopen('https://anh-dz.github.io/eyecare/version.html').read())
-                playsound('sound//bell.wav', block=False)
-                self.msg.setText(language[nlang][26])
-            else: self.msg.setText(language[nlang][27])
-        except: self.msg.setText(language[nlang][28])
+        self.update_thread = UpdateCheckThread()
+        widgets.check_update.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(255, 245, 105);border: 1px soild grey;border-radius: 5px;font: 13pt \"Roboto Medium\"}")
+        self.update_thread.update_result.connect(self.show_update_result)
+        self.update_thread.start()
+    def show_update_result(self, message):
+        if message == language[nlang][26]:
+            playsound('sound//bell.wav', block=False)
+        self.msg.setText(message)
         self.msg.exec()
+        widgets.check_update.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(255, 255, 155);border: 1px soild grey;border-radius: 5px;font: 13pt \"Roboto Medium\"}QPushButton:hover{background-color: rgb(255, 245, 105)}")
     def areusure(self):
         box = QMessageBox()
         box.setWindowTitle('EyeCare')
@@ -748,24 +771,24 @@ class Main_APP(QMainWindow):
             self.diaLog.close()
             widgets.pin_btn.setIcon(QIcon("qrc/pin.png"))
         else:
-            self.diaLog = DialogFunc(self)
+            self.diaLog = DialogFunc(self, self.start__)
             widgets.pin_btn.setIcon(QIcon("qrc/unpin.png"))
 
 #TRAY ICON
     def start_click(self):
-        if self._setting[4] and not start__: self.show_eyecare()
-        widgets.start.click()
+        if self._setting[4] and not self.start__: self.show_eyecare()
+        self.start_active()
     def pause_click(self):
         self.show_eyecare()
-        widgets.button_pause.click()
+        self.pause_active()
     def tray_icon(self):
         def _show(reason): #Show the app
             if reason == self.tray.ActivationReason.Trigger: self.show_eyecare()
         self.tray_menu = QMenu()
         self.show_app = QAction(language[nlang][32])
         self.hide_app = QAction(language[nlang][33])
-        self.quit_app = QAction(language[nlang][34])
-        self.start_app = QAction(language[nlang][35])
+        self.quit_app = QAction(language[nlang][35])
+        self.start_app = QAction(language[nlang][34])
         self.show_app.triggered.connect(self.show_eyecare)
         self.hide_app.triggered.connect(self.hide)
         self.quit_app.triggered.connect(self.close_app)
@@ -779,12 +802,37 @@ class Main_APP(QMainWindow):
         self.tray.setContextMenu(self.tray_menu)
         self.tray.activated.connect(_show)
         self.tray.show()
+    def reload_tray(self):
+        self.tray_menu.removeAction(self.show_app)
+        self.tray_menu.removeAction(self.hide_app)
+        self.tray_menu.removeAction(self.quit_app)
+        self.tray_menu.removeAction(self.start_app)
+        self.show_app = QAction(language[nlang][32])
+        self.hide_app = QAction(language[nlang][33])
+        self.quit_app = QAction(language[nlang][35])
+        self.start_app = QAction(language[nlang][34])
+        self.show_app.triggered.connect(self.show_eyecare)
+        self.hide_app.triggered.connect(self.hide)
+        self.quit_app.triggered.connect(self.close_app)
+        self.start_app.triggered.connect(self.start_click)
+        self.tray_menu.addAction(self.show_app)
+        self.tray_menu.addAction(self.hide_app)
+        self.tray_menu.addAction(self.quit_app)
+        self.tray_menu.addAction(self.start_app)
+
+        if not self.start__:
+            self.pause_app = QAction(language[nlang][12])
+            self.start_app = QAction(language[nlang][13])
+            self.tray_menu.addAction(self.pause_app)
+            self.tray_menu.addAction(self.start_app)
+            self.pause_app.triggered.connect(self.pause_click)
+            self.start_app.triggered.connect(self.start_click)
     
     def close_app(self):
         self.show_eyecare()
         self.close()
 
-start__, pause_, __sleep_start__  = True, False, True
+pause_, __sleep_start__  = False, True
 
 app = QApplication(sys.argv)
 ui = Main_APP()
