@@ -527,10 +527,12 @@ class Main_APP(QMainWindow):
     def bieu_do(self, num):
         text = widgets.chon_bieu_do.currentText()
         gio = QBarSet(text[:6])
+        gio.setColor(QColor(13, 166, 244))
         if not num: data_temp = self.data
         elif num==1: data_temp = [i*60 for i in self.data]
         else:
             gio = QBarSet(language[nlang][17])
+            gio.setColor(QColor(198, 66, 86))
             data_temp = self.sleep_list
         gio.append(data_temp)
         series = QBarSeries()
