@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-__author__ = "Mink Alex Vina"
+__author__ = "Nhat Anh Pico"
 __copyright__ = "Copyright 2021, EyeCare"
-__credits__ = "Mink Alex Vina"
+__credits__ = "Nhat Anh Pico"
 __license__ = "EyeCare"
 __version__ = "1.5"
 __email__ = "nmnanh1235@gmail.com"
@@ -12,7 +12,7 @@ from mod import *
 
 s, nlang, language = lang_focus()
 
-with open('qrc//additionals.txt', 'r', encoding='utf-8') as f:
+with open('qrc/additionals.txt', 'r', encoding='utf-8') as f:
     language = f.read().split('\\')
     language[0] = language[0].splitlines()
     language[1] = language[1].splitlines()
@@ -25,20 +25,19 @@ if tuple(p.name() for p in psutil.process_iter()).count("EyeCare.exe")>1:
 isPwgsOn = False
 
 class DialogFunc(Ui_Dialog):
-    def __init__(self, main_app, start__):
+    def __init__(self, main_app):
         global Pwgs, isPwgsOn
         super().__init__()
         Pwgs = self
-        self.main_app = main_app
-        self.s = start__
+        self.main_app = main_app  # Store reference to main app
         Pwgs.setupUi(self)
         Pwgs.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
         Pwgs.pin_start.clicked.connect(self.pin_click)
-        if self.s:
+        if start__:
             Pwgs.pin_start.setIcon(QIcon(QPixmap("qrc/start.png")))
         else:
             Pwgs.pin_start.setIcon(QIcon(QPixmap("qrc/stop.png")))
-        Pwgs.lb_time.setText(widgets.time_left.text().replace(' Left', '').replace('Còn ', ''))
+        Pwgs.lb_time.setText(f"{widgets.work_h.text()}:{widgets.work_m.text()}:{widgets.work_s.text()}")
         Pwgs.show()
         isPwgsOn = True
     
@@ -63,14 +62,17 @@ class Time_COUNT(QThread):
 
     def run(self):
         time__about__temp = self.time__about.copy()
-        while True:
+        while not start__:
             while pause_: pass
+            if start__: break
             if nlang == 0:
                 widgets.time_left.setText(f"{str(time__about__temp[0]).zfill(2)}:{str(time__about__temp[1]).zfill(2)}:{str(time__about__temp[2]).zfill(2)} Left")
             else:
                 widgets.time_left.setText(f"Còn {str(time__about__temp[0]).zfill(2)}:{str(time__about__temp[1]).zfill(2)}:{str(time__about__temp[2]).zfill(2)}")
             if isPwgsOn: Pwgs.lb_time.setText(f"{str(time__about__temp[0]).zfill(2)}:{str(time__about__temp[1]).zfill(2)}:{str(time__about__temp[2]).zfill(2)}")
+            if start__: break
             time.sleep(1)
+            if start__: break
             time__about__temp[2]-=1
             if time__about__temp[0] == 0 and time__about__temp[1] == 0 and time__about__temp[2] == 5:
                 Notifi().show_toast(language[nlang][2])
@@ -84,6 +86,7 @@ class Time_COUNT(QThread):
                 else:
                     time__about__temp = self.time__about.copy()
                     focus(self._setting[3], self._setting[2], self._det, self.tim_wait, nlang)
+        time__about__temp.clear()
 
 class Time_SLEEP(QThread):
     def __init__(self, _setting_sleep, _pass, sleep_data, days, date_today, sleep_list, parent=None):
@@ -133,23 +136,6 @@ class Time_SLEEP(QThread):
         widgets.start_sleep.setIcon(QIcon(QPixmap("qrc/start.png")))
         Notifi().show_toast(language[nlang][6])
 
-from PyQt6.QtCore import QThread, pyqtSignal
-from urllib.request import urlopen
-
-class UpdateCheckThread(QThread):
-    update_result = pyqtSignal(str)
-
-    def run(self):
-        try:
-            current_version = "1.5"
-            response = urlopen('https://anh-dz.github.io/eyecare/version.html', timeout=1).read().decode().strip()
-            if response != current_version:
-                self.update_result.emit(language[nlang][26])
-            else:
-                self.update_result.emit(language[nlang][27])
-        except:
-            self.update_result.emit(language[nlang][28])
-
 class Main_APP(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -186,10 +172,10 @@ class Main_APP(QMainWindow):
 
         #ABOUT
         widgets.website.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://anh-dz.github.io/eyecare/")))
-        widgets.youtube.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://youtube.com/minkalexvina")))
-        widgets.blogspot.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://chuyendanit.blogspot.com")))
-        widgets.facebook.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://facebook.com/minkalexvina")))
-        widgets.insta.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://instagram.com/minkalexvina")))
+        widgets.youtube.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://youtube.com/@nhatanhpico")))
+        widgets.blogspot.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://weakdream.blogspot.com")))
+        widgets.facebook.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://facebook.com/nhatanhpico")))
+        widgets.insta.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("https://instagram.com/nhatanhpico")))
         widgets.mail.clicked.connect(lambda: QDesktopServices.openUrl(QUrl("mailto:nmnanh1235@gmail.com")))
 
         if self._setting[3] == 1: widgets.file_edit.setStyleSheet("QPushButton{background-color:rgb(101, 191, 191);border: 1px soild grey;border-radius: 5px;font:11pt \"Roboto\"}QPushButton:hover{background-color:rgb(211, 211, 211)}")
@@ -204,8 +190,8 @@ class Main_APP(QMainWindow):
         widgets.start_sleep.clicked.connect(self.start_sleep_active)
         widgets.start.clicked.connect(self.start_active)
         widgets.pin_btn.clicked.connect(self.start_dialog)
-        widgets.button_next.clicked.connect(self.next_active)
         widgets.button_pause.clicked.connect(self.pause_active)
+        widgets.button_next.clicked.connect(self.next_active)
         widgets.check_update.clicked.connect(self.update_active)
         widgets.edit.clicked.connect(self.edit_active)
         widgets.edit_sleep.clicked.connect(self.edit_sleep_active)
@@ -241,7 +227,7 @@ class Main_APP(QMainWindow):
         self.msg = QMessageBox()
         self.msg.setWindowIcon(QIcon("logo.ico"))
         self.msg.setWindowTitle("EyeCare")
-        self.show() if self._setting[1] else widgets.start.click()
+        self.show() if self._setting[1] else self.start_active()
         if self._setting_sleep[1]: widgets.start_sleep.click()
 
         keyboard.add_hotkey(s, self.hotkey_handler)
@@ -250,6 +236,53 @@ class Main_APP(QMainWindow):
         global nlang
         self.translator = QTranslator()
         nlang = self.ui.language_combobox.currentIndex()
+        self._det = open_det()
+        if nlang == 0:
+            if self._det == []:
+                self._det = ['C:/', "Your eye need to rest now! Remember to save your work <3"]
+            widgets.text_about.setHtml("<!DOCTYPE html>\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Roboto Light\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:22pt;\">EyeCare 1.5</span></p>"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Copyright ©2021 EyeCare _ PICO</span></p>"
+"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">The Importance of Eye Protection</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> \"Eyes are the windows to the soul\", but for many purposes such as work, research, and study, you have to sit for hours in front of a computer. This affects your eyes significantly, and can even be dangerous for them. So how can you protect, prevent, and reduce eye strain when using computers?</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> For computer users, especially office workers, eye strain is a frequent issue. Many studies show that 50-90% of computer users experience eye fatigue and other uncomfortable visual symptoms.</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> These problems significantly affect health, causing physical fatigue, mental stress, and reduced work efficiency. Moreover, prolonged computer use can cause very uncomfortable eye problems such as eye twitching, increased myopia, red eyes...</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> We may all know about this issue, but in Industry 4.0, work requires computer use, so we can only protect our eyes. We often pay attention to sitting far from the computer screen and maintaining proper posture but forget to give our eyes a rest when working hard. Therefore, EyeCare was created to solve this problem. EyeCare helps us set automatic rest schedules after a period of time, and when break time comes, the program will notify you and actively lock the computer so you can ensure the best rest. During that time, you can put work aside, maybe make a cup of coffee, blink your eyes, have a glass of milk, massage your eyes, ... After that, you can return to work, your eyes will have rested for a certain period, and won't be tired or painful anymore.</span></p>"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
+"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">Suggestion: The 20-20-20 Rule for Eye Protection</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Every 20 minutes of computer work, take 20 seconds away from the computer to look at something 20 feet away (<==> 609.6 cm). This helps your eyes rest appropriately, relax, and prevent eye strain.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> By default, EyeCare will be set to rest mode according to the above principle.</span></p>"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
+"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\">Additionally...</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> EyeCare also helps you set bedtime! When you get enough sleep, you'll work more effectively!</span></p>"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-style:italic;\"><center>\"EyeCare - For your eyes\"</center></span></p></body></html>")
+        else:
+            if self._det == []:
+                self._det = ['C:/', "Bạn đã sử dụng máy tính khá lâu! Dừng lại và nghỉ ngơi một chút"]
+            widgets.text_about.setHtml("<!DOCTYPE html>\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Roboto Light\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:22pt;\">EyeCare 1.5</span></p>"
+"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Copyright ©2021 EyeCare _ PICO</span></p>"
+"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Tầm quan trọng của việc bảo vệ mắt</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> “Đôi mắt là cửa sổ tâm hồn”, thế nhưng vì nhiều mục đích như làm việc, tra cứu, học tập mà bạn phải ngồi hàng giờ liền trên máy vi tính. Việc này tác động nhiều đến đôi mắt của bạn, thậm chí gây nguy hiểm cho mắt. Vậy làm thế nào để bảo vệ, ngăn ngừa, giảm mỏi mắt khi dùng máy tính?</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Với những người dùng máy vi tính, đặc biệt là dân văn phòng thì tình trạng nhức mỏi mắt là vấn đề thường xuyên xảy ra. Nhiều nghiên cứu chỉ ra tới 50–90% người dùng máy vi tính bị hiện tượng mỏi mắt và các triệu chứng thị giác khó chịu khác.</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Những vấn đề này sẽ ảnh hưởng nhiều đến sức khỏe, nó khiến bạn mệt mỏi về thể chất, tinh thần giảm hiệu suất làm việc. Thậm chí, dùng máy tính một thời gian dài cũng gây những vấn đề về mắt rất khó chịu như co giật mắt, tăng độ cận, mắt đỏ…</span></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Vấn đề này có lẽ chúng ta đều đã biết, nhưng vì ở thời đại 4.0, công việc bắt buộc phải dùng máy tính, chúng ta chỉ còn cách tự bảo vệ mắt của mình. Chúng ta thường chú ý đến việc ngồi cách xa màn hình máy tính, ngồi đúng tư thế mà quên mất việc cho đôi mắt nghỉ ngơi một chút khi làm việc vất vả. Vì vậy, chương trình EyeCare ra đời nhằm giải quyết vấn đề đó. EyeCare giúp chúng ta đặt lịch nghỉ ngơi tự động sau một khoảng thời gian, khi đến thời gian nghỉ chương trình sẽ thông báo với bạn, chủ động khóa máy tính để bạn có thể đảm bảo việc nghỉ ngơi một cách tốt nhất. Trong thời gian đó, bạn hãy gác lại công việc, có thể làm một tách cafe, chớp mắt, một cốc sữa, massage cho mắt, ... Sau đó, bạn có thể quay lại làm việc, đôi mắt sẽ được nghỉ ngơi một khoảng thời gian nhất định, sẽ không còn bị mỏi, đau mắt nữa.</span></p>"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
+"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Đề xuất: Nguyên tắc 20 – 20 – 20 bảo vệ mắt</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Cứ mỗi 20 phút làm việc với máy tính, hãy bỏ 20 giây không dùng máy tính để nhìn ra xa 20 feet (&lt;=&gt; 609.6 cm). Điều này giúp mắt bạn được nghỉ ngơi hợp lý, thư giãn mắt, chống mỏi mắt.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Mặc định, EyeCare sẽ được cài đặt chế độ nghỉ ngơi theo nguyên tắc trên.</span></p>"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
+"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Ngoài ra...</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> EyeCare còn hỗ trợ bạn thiết lập thời gian đi ngủ! Khi bạn ngủ đủ giấc, bạn sẽ làm việc một cách hiệu quả hơn!</span></p>"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-style:italic;\"><center>&quot;EyeCare - Vì đôi mắt của bạn&quot;</center></span></p></body></html>")
         
         QApplication.removeTranslator(self.translator)
         
@@ -257,15 +290,21 @@ class Main_APP(QMainWindow):
         if self.translator.load(f"qrc/translations_{nlang}.qm"):
             QApplication.installTranslator(self.translator)
             widgets.retranslateUi(self)
-            self.reload_tray()
         else:
             pass
+        self.tray_menu.clear()
+        self.tray_icon()
+        self._det_const = tuple(self._det.copy())
+        if not start__:
+            self.pause_active()
+            self.pause_active()
 
     def get_init_variable(self):
         self.start = time.time()
         self.edit_sleep_= False
         self.edit_ = False
         self.pause_ = False
+        self.__sleep_start__ = True
         self.start__ = True
 
         self._time = open_time()
@@ -274,9 +313,8 @@ class Main_APP(QMainWindow):
         self._setting, self._pass_remind = open_setting()
         self._time_sleep, self._setting_sleep = open_sleep()
         self.sleep_data = open_sleep_data()
-        self._det = open_det()
+        
         self._setting_const = tuple(self._setting.copy())
-        self._det_const = tuple(self._det.copy())
         self._pass_const = str(self._pass_remind)
         self._time_sleep_const = tuple(self._time_sleep.copy())
         self._setting_sleep_const = tuple(self._setting_sleep.copy())
@@ -307,7 +345,8 @@ class Main_APP(QMainWindow):
         widgets.shortcut_button.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(220, 222, 220);border: 1px soild grey;border-radius: 0px;font: 16pt \"Roboto\"}")
     
     def start_active(self):
-        if self.start__:
+        global start__
+        if start__:
             self.time__about = [widgets.work_h.text(), widgets.work_m.text(), widgets.work_s.text()]
             wait_time = [widgets.relax_h.text(), widgets.relax_m.text(), widgets.relax_s.text()]
             for i in range(3):
@@ -339,7 +378,8 @@ class Main_APP(QMainWindow):
             else: _temp_pass = True
             if _temp_pass: self.call_stop()
     def active(self):
-        self.start__ = False
+        global start__
+        start__ = False
         widgets.button_pause.setVisible(True)
         widgets.button_next.setVisible(True)
         widgets.start.setIcon(QIcon(QPixmap("qrc/stop.png")))
@@ -354,9 +394,8 @@ class Main_APP(QMainWindow):
         self.COUNT = Time_COUNT(self._setting, self._det, self.tim_wait, self.time__about)
         self.COUNT.start()
     def call_stop(self):
-        self.COUNT.terminate()
-        global pause_
-        self.start__, pause_ = True, False
+        global start__, pause_
+        start__, pause_ = True, False
         widgets.button_pause.setVisible(False)
         widgets.button_next.setVisible(False)
         widgets.start.setIcon(QIcon(QPixmap("qrc/start.png")))
@@ -367,13 +406,12 @@ class Main_APP(QMainWindow):
         self.tray_menu.removeAction(self.pause_app)
         self.tray_menu.addAction(self.start_app)
         self.start_app.triggered.connect(self.start_click)
-    
-    def next_active(self):
-        self.call_stop()
-        focus(self._setting[3], self._setting[2], self._det, self.tim_wait, nlang)
-        self.start_active()
 
     #JUST A BUTTON
+    def next_active(self):
+        self.start_active()
+        focus(self._setting[3], self._setting[2], self._det, self.tim_wait, nlang)
+        self.start_active()
     def pause_active(self):
         global pause_
         if not pause_:
@@ -527,12 +565,10 @@ class Main_APP(QMainWindow):
     def bieu_do(self, num):
         text = widgets.chon_bieu_do.currentText()
         gio = QBarSet(text[:6])
-        gio.setColor(QColor(13, 166, 244))
         if not num: data_temp = self.data
         elif num==1: data_temp = [i*60 for i in self.data]
         else:
             gio = QBarSet(language[nlang][17])
-            gio.setColor(QColor(198, 66, 86))
             data_temp = self.sleep_list
         gio.append(data_temp)
         series = QBarSeries()
@@ -675,16 +711,14 @@ class Main_APP(QMainWindow):
         self.msg.setText(language[nlang][25])
         self.msg.exec()
     def update_active(self):
-        self.update_thread = UpdateCheckThread()
-        widgets.check_update.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(255, 245, 105);border: 1px soild grey;border-radius: 5px;font: 13pt \"Roboto Medium\"}")
-        self.update_thread.update_result.connect(self.show_update_result)
-        self.update_thread.start()
-    def show_update_result(self, message):
-        if message == language[nlang][26]:
-            playsound('sound//bell.wav', block=False)
-        self.msg.setText(message)
+        try:
+            if urlopen('https://anh-dz.github.io/eyecare/version.html').read() != b'1.5\n':
+                print(urlopen('https://anh-dz.github.io/eyecare/version.html').read())
+                playsound('sound//bell.wav', block=False)
+                self.msg.setText(language[nlang][26])
+            else: self.msg.setText(language[nlang][27])
+        except: self.msg.setText(language[nlang][28])
         self.msg.exec()
-        widgets.check_update.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(255, 255, 155);border: 1px soild grey;border-radius: 5px;font: 13pt \"Roboto Medium\"}QPushButton:hover{background-color: rgb(255, 245, 105)}")
     def areusure(self):
         box = QMessageBox()
         box.setWindowTitle('EyeCare')
@@ -704,7 +738,27 @@ class Main_APP(QMainWindow):
 #EVENT
     def hotkey_handler(self):
         playsound('sound//bell.wav', block=False)
-        widgets.start.click()
+        if start__:
+            self.start_active()
+        else:
+            self.next_active()
+    
+    def saveTime(self):
+        end = time.time()
+        time_use = (end - self.start) / 3600
+        try:
+            if self.days[-1] == self.date_today:
+                time_use = "{:0.6f}".format(time_use + self.data[-1])
+                self.data[-1] = time_use
+            else:
+                self.days.append(self.date_today)
+                self.data.append("{:0.6f}".format(time_use))
+        except:
+            self.days.append(self.date_today)
+            self.data.append("{:0.6f}".format(time_use))
+        self.data_write = [str(i) for i in self.data]
+
+        write_data(user, self.days[len(self.days)-7:], self.data_write[len(self.data_write)-7:])
     
     def eventFilter(self, source, event):
         if event.type() == QEvent.Type.WindowStateChange:
@@ -712,6 +766,8 @@ class Main_APP(QMainWindow):
                 self.hide()
         return False
     def closeEvent(self, event):
+        self.saveTime()
+
         if self._setting[4]:
             self.show_eyecare()
             event.ignore()
@@ -745,22 +801,6 @@ class Main_APP(QMainWindow):
                     temp.append(i[0])
                     temp.append(i[1])
                 write_sleep_data(user, "sleep", temp + [str(i) for i in self._setting_sleep])
-
-            end = time.time()
-            time_use = (end - self.start) / 3600
-            try:
-                if self.days[-1] == self.date_today:
-                    time_use = "{:0.6f}".format(time_use + self.data[-1])
-                    self.data[-1] = time_use
-                else:
-                    self.days.append(self.date_today)
-                    self.data.append("{:0.6f}".format(time_use))
-            except:
-                self.days.append(self.date_today)
-                self.data.append("{:0.6f}".format(time_use))
-            self.data = [str(i) for i in self.data]
-            write_data(user, self.days[len(self.days)-7:], self.data[len(self.data)-7:])
-
             event.accept()
 
 
@@ -773,12 +813,12 @@ class Main_APP(QMainWindow):
             self.diaLog.close()
             widgets.pin_btn.setIcon(QIcon("qrc/pin.png"))
         else:
-            self.diaLog = DialogFunc(self, self.start__)
+            self.diaLog = DialogFunc(self)
             widgets.pin_btn.setIcon(QIcon("qrc/unpin.png"))
 
 #TRAY ICON
     def start_click(self):
-        if self._setting[4] and not self.start__: self.show_eyecare()
+        if self._setting[4] and not start__: self.show_eyecare()
         self.start_active()
     def pause_click(self):
         self.show_eyecare()
@@ -804,37 +844,12 @@ class Main_APP(QMainWindow):
         self.tray.setContextMenu(self.tray_menu)
         self.tray.activated.connect(_show)
         self.tray.show()
-    def reload_tray(self):
-        self.tray_menu.removeAction(self.show_app)
-        self.tray_menu.removeAction(self.hide_app)
-        self.tray_menu.removeAction(self.quit_app)
-        self.tray_menu.removeAction(self.start_app)
-        self.show_app = QAction(language[nlang][32])
-        self.hide_app = QAction(language[nlang][33])
-        self.quit_app = QAction(language[nlang][35])
-        self.start_app = QAction(language[nlang][34])
-        self.show_app.triggered.connect(self.show_eyecare)
-        self.hide_app.triggered.connect(self.hide)
-        self.quit_app.triggered.connect(self.close_app)
-        self.start_app.triggered.connect(self.start_click)
-        self.tray_menu.addAction(self.show_app)
-        self.tray_menu.addAction(self.hide_app)
-        self.tray_menu.addAction(self.quit_app)
-        self.tray_menu.addAction(self.start_app)
-
-        if not self.start__:
-            self.pause_app = QAction(language[nlang][12])
-            self.start_app = QAction(language[nlang][13])
-            self.tray_menu.addAction(self.pause_app)
-            self.tray_menu.addAction(self.start_app)
-            self.pause_app.triggered.connect(self.pause_click)
-            self.start_app.triggered.connect(self.start_click)
     
     def close_app(self):
         self.show_eyecare()
         self.close()
 
-pause_, __sleep_start__  = False, True
+start__, pause_, __sleep_start__  = True, False, True
 
 app = QApplication(sys.argv)
 ui = Main_APP()
