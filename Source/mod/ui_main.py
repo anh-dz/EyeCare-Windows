@@ -51,29 +51,29 @@ class Ui_MainWindow(object):
         self.non_4 = QLabel(self.page_0)
         self.non_4.setGeometry(QRect(410, 170, 16, 41))
         self.non_4.setStyleSheet("font: 30pt \"Roboto\"")
-        
+
         self.button_pause = QPushButton(self.page_0)
-        self.button_pause.setGeometry(QRect(165, 243, 50, 50))
+        self.button_pause.setGeometry(QRect(190, 248, 50, 50))
         self.button_pause.setStyleSheet("border: 0px")
         self.button_pause.setText("")
         self.button_pause.setIcon(QIcon(QPixmap("qrc/pause.png")))
         self.button_pause.setIconSize(QSize(50, 50))
         self.button_pause.setVisible(False)
-
-        self.start = QPushButton(self.page_0)
-        self.start.setGeometry(QRect(275, 243, 50, 50))
-        self.start.setStyleSheet("border: 0px;")
-        self.start.setText("")
-        self.start.setIcon(QIcon(QPixmap("qrc/start.png")))
-        self.start.setIconSize(QSize(50, 50))
-
+        
         self.button_next = QPushButton(self.page_0)
-        self.button_next.setGeometry(QRect(385, 243, 50, 50))
+        self.button_next.setGeometry(QRect(390, 248, 50, 50))
         self.button_next.setStyleSheet("border: 0px")
         self.button_next.setText("")
         self.button_next.setIcon(QIcon(QPixmap("qrc/next.png")))
         self.button_next.setIconSize(QSize(50, 50))
         self.button_next.setVisible(False)
+
+        self.start = QPushButton(self.page_0)
+        self.start.setGeometry(QRect(290, 248, 50, 50))
+        self.start.setStyleSheet("border: 0px;")
+        self.start.setText("")
+        self.start.setIcon(QIcon(QPixmap("qrc/start.png")))
+        self.start.setIconSize(QSize(50, 50))
         
         self.edit = QPushButton(self.page_0)
         self.edit.setGeometry(QRect(490, 20, 54, 50))
@@ -247,7 +247,7 @@ class Ui_MainWindow(object):
         self.password_edit.setStyleSheet("QPushButton{color:rgb(56, 56, 56);background-color:rgb(191, 191, 191);border: 1px soild grey;border-radius: 5px;font:11pt \"Roboto\"}QPushButton:hover{background-color: rgb(211, 211, 211)}")
         self.check_update = QPushButton(self.page_3)
         self.check_update.setGeometry(QRect(250, 335, 180, 30))
-        self.check_update.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(255, 255, 155);border: 1px soild grey;border-radius: 5px;font: 13pt \"Roboto Medium\"}QPushButton:hover{background-color: rgb(255, 245, 105)}")
+        self.check_update.setStyleSheet("QPushButton{color: rgb(56, 56, 56);background-color: rgb(255, 255, 155);border: 1px soild grey;border-radius: 5px;font: 13pt \"Roboto Medium\"}QPushButton:hover{background-color: rgb(255, 255, 105)}")
         self.check_update.setIcon(QIcon(QPixmap("qrc/bird.png")))
         self.check_update.setIconSize(QSize(35, 35))
         self.eyes = QLabel(self.page_3)
@@ -464,24 +464,3 @@ class Ui_MainWindow(object):
         self.non_4.setText(":")
         self.non_sleep_1.setText(":")
         self.non_sleep_2.setText(":")
-
-        self.text_about.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Roboto Light\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:22pt;\">EyeCare 1.5</span></p>"
-"<p align=\"right\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Copyright ©2021 EyeCare _ MINK</span></p>"
-"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Tầm quan trọng của việc bảo vệ mắt</span></p>"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> “Đôi mắt là cửa sổ tâm hồn”, thế nhưng vì nhiều mục đích như làm việc, tra cứu, học tập mà bạn phải ngồi hàng giờ liền trên máy vi tính. Việc này tác động nhiều đến đôi mắt của bạn, thậm chí gây nguy hiểm cho mắt. Vậy làm thế nào để bảo vệ, ngăn ngừa, giảm mỏi mắt khi dùng máy tính?</span></p>"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Với những người dùng máy vi tính, đặc biệt là dân văn phòng thì tình trạng nhức mỏi mắt là vấn đề thường xuyên xảy ra. Nhiều nghiên cứu chỉ ra tới 50–90% người dùng máy vi tính bị hiện tượng mỏi mắt và các triệu chứng thị giác khó chịu khác.</span></p>"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Những vấn đề này sẽ ảnh hưởng nhiều đến sức khỏe, nó khiến bạn mệt mỏi về thể chất, tinh thần giảm hiệu suất làm việc. Thậm chí, dùng máy tính một thời gian dài cũng gây những vấn đề về mắt rất khó chịu như co giật mắt, tăng độ cận, mắt đỏ…</span></p>"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Vấn đề này có lẽ chúng ta đều đã biết, nhưng vì ở thời đại 4.0, công việc bắt buộc phải dùng máy tính, chúng ta chỉ còn cách tự bảo vệ mắt của mình. Chúng ta thường chú ý đến việc ngồi cách xa màn hình máy tính, ngồi đúng tư thế mà quên mất việc cho đôi mắt nghỉ ngơi một chút khi làm việc vất vả. Vì vậy, chương trình EyeCare ra đời nhằm giải quyết vấn đề đó. EyeCare giúp chúng ta đặt lịch nghỉ ngơi tự động sau một khoảng thời gian, khi đến thời gian nghỉ chương trình sẽ thông báo với bạn, chủ động khóa máy tính để bạn có thể đảm bảo việc nghỉ ngơi một cách tốt nhất. Trong thời gian đó, bạn hãy gác lại công việc, có thể làm một tách cafe, chớp mắt, một cốc sữa, massage cho mắt, ... Sau đó, bạn có thể quay lại làm việc, đôi mắt sẽ được nghỉ ngơi một khoảng thời gian nhất định, sẽ không còn bị mỏi, đau mắt nữa.</span></p>"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
-"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Đề xuất: Nguyên tắc 20 – 20 – 20 bảo vệ mắt</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Cứ mỗi 20 phút làm việc với máy tính, hãy bỏ 20 giây không dùng máy tính để nhìn ra xa 20 feet (&lt;=&gt; 609.6 cm). Điều này giúp mắt bạn được nghỉ ngơi hợp lý, thư giãn mắt, chống mỏi mắt.</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> Mặc định, EyeCare sẽ được cài đặt chế độ nghỉ ngơi theo nguyên tắc trên.</span></p>"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
-"<p style=\" font-family:\'Roboto Medium\'; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt;\"> Ngoài ra...</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> EyeCare còn hỗ trợ bạn thiết lập thời gian đi ngủ! Khi bạn ngủ đủ giấc, bạn sẽ làm việc một cách hiệu quả hơn!</span></p>"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-style:italic;\"><center>&quot;EyeCare - Vì đôi mắt của bạn&quot;</center></span></p></body></html>")
