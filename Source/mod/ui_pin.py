@@ -17,8 +17,8 @@ class Ui_Dialog(QtWidgets.QDialog):
         icon.addPixmap(QtGui.QPixmap("logo.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Dialog.setWindowIcon(icon)
         Dialog.setStyleSheet("background-color:rgb(242, 242, 242);\n"
-"color: rgb(56, 56, 56);\n"
-"font: 24pt \"Arial\";\n"
+"color: black;\n"
+"font: 24pt \"Roboto\";"
 "")
         self.lb_time = QtWidgets.QLabel(parent=Dialog)
         self.lb_time.setGeometry(QtCore.QRect(40, 0, 145, 60))
